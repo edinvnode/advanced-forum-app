@@ -1,16 +1,27 @@
 import React from 'react';
 import { titles } from './data';
 
+//components
+import LoginForm from './components/LoginForm';
+import MainPage from './components/MainPage';
+
+//router
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
 function App() {
   return (
     <div className="App">
-      {titles.map((title) => (
-        <div className="title">
-          <a href="#" className="title">
-            {title.title}
-          </a>
-        </div>
-      ))}
+      <nav>
+        <a href="#" className="login-button">
+          Log In
+        </a>
+      </nav>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/" exact element={<MainPage titles={titles} />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

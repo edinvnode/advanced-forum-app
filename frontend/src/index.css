@@ -5,6 +5,20 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+  background-color: gray;
+}
+
+nav {
+  height: 50px;
+}
+
+.login-button {
+  float: right;
+  margin-right: 25px;
+  margin-top: 15px;
+}
+
 .title {
   height: 100px;
   width: auto;
