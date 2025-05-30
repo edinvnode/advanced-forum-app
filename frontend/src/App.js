@@ -11,12 +11,12 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <nav>
-        <a href="#" className="login-button">
-          Log In
-        </a>
-      </nav>
       <Router>
+        <nav>
+          <Link to="/login" className="login-link">
+            Login
+          </Link>
+        </nav>
         <Routes>
           <Route path="/login" element={<LoginForm />} />
           <Route path="/" exact element={<MainPage titles={titles} />} />
