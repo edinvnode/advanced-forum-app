@@ -5,6 +5,7 @@ import { titles } from './data';
 import LoginForm from './components/LoginForm';
 import MainPage from './components/MainPage';
 import Profile from './components/Profile';
+import Topic from './components/Topic';
 
 //router
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" exact element={<MainPage titles={titles} />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/topic" element={<Topic />} />
         </Routes>
       </Router>
     </div>
