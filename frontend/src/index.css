@@ -46,3 +46,10 @@ form {
 form div label {
   margin: 5px;
 }
+
+button {
+  margin: 5px;
+  padding: 10px;
+  background-color: green;
+  color: white;
+}
