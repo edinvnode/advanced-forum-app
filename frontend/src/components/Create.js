@@ -1,10 +1,10 @@
 import React from 'react';
 
-const LoginForm = () => {
+const Create = () => {
   return (
     <div className="form">
       <form>
-        <p>Enter your username and password</p>
+        <p>Enter your email and password</p>
         <div>
           <label>Email</label>
           <input type="email" />
@@ -14,11 +14,11 @@ const LoginForm = () => {
           <input type="password" />
         </div>
         <div>
-          <button>Submit</button>
+          <button>Create Account</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default LoginForm;
+export default Create;
