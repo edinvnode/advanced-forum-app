@@ -6,11 +6,11 @@ const Create = () => {
       <form>
         <p>Enter your email and password</p>
         <div>
-          <label>Email</label>
+          <label className="lbl-email">Email</label>
           <input type="email" />
         </div>
         <div>
-          <label>Password</label>
+          <label className="lbl-password">Password</label>
           <input type="password" />
         </div>
         <div>
