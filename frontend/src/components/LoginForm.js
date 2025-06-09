@@ -13,7 +13,7 @@ const LoginForm = () => {
   return (
     <div className="form">
       <form>
-        <p>Enter your username and password</p>
+        <p>Enter your email and password</p>
         <div>
           <label className="lbl-email">Email</label>
           <input
