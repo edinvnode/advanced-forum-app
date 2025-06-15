@@ -7,7 +7,7 @@ const userRoutes = require('./routes/user');
 //mongo URI
 //const MONGO_URI="mongodb+srv://user:user@cluster0.w0exw.mongodb.net/?retryWrites=true&w=majority";
 const MONGO_URI =
-  'mongodb://atlas-sql-658700a1e00058779f655976-w0exw.a.query.mongodb.net/test?ssl=true&authSource=admin;';
+  'mongodb+srv://root:toor@cluster0.z87oyu9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 const app = express();
 
@@ -41,5 +41,5 @@ mongoose
     });
   })
   .catch((error) => {
-    console.log(error);
+    console.log('The error is: ' + error);
   });
