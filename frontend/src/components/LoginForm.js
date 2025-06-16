@@ -6,8 +6,8 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(email);
-    alert(password);
+    console.log(email);
+    console.log(password);
   };
 
   return (
