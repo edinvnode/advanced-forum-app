@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const Create = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   /*
   const handleSubmit = (e) => {
@@ -21,11 +22,11 @@ const Create = () => {
       return;
     }
 
-    const workout = { title, load, reps };
+    const username = { email, password };
 
     const response = await fetch('/api/workouts', {
       method: 'POST',
-      body: JSON.stringify(workout),
+      body: JSON.stringify(username),
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${user.token}`,
