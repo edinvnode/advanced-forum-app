@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 
+import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
+import { useAuthContext } from '../hooks/useAuthContext';
+
 const Create = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  const { dispatch } = useWorkoutsContext();
+  const { user } = useAuthContext();
 
   /*
   const handleSubmit = (e) => {
@@ -24,7 +30,7 @@ const Create = () => {
 
     const username = { email, password };
 
-    const response = await fetch('/api/workouts', {
+    const response = await fetch('/api/user', {
       method: 'POST',
       body: JSON.stringify(username),
       headers: {
