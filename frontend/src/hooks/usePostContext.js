@@ -5,7 +5,7 @@ export const usePostContext = () => {
   const context = useContext(PostContext);
 
   if (!context) {
-    throw Error('useContextHook must be used withing context provider');
+    throw Error('usePostContext must be used withing context provider');
   }
 
   return context;

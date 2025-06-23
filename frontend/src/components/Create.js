@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
+import { usePostContext } from '../hooks/usePostContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 
 const Create = () => {
@@ -8,7 +8,7 @@ const Create = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const { dispatch } = useWorkoutsContext();
+  const { dispatch } = usePostContext();
   const { user } = useAuthContext();
 
   /*
@@ -42,7 +42,7 @@ const Create = () => {
 
     if (!response.ok) {
       setError(json.error);
-      setEmptyFields(json.emptyFields);
+      //setEmptyFields(json.emptyFields);
     }
     if (response.ok) {
       setEmail('');

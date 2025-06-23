@@ -6,15 +6,15 @@ export const postReducer = (state, action) => {
   switch (action.type) {
     case 'SET_POST':
       return {
-        workouts: action.payload,
+        posts: action.payload,
       };
     case 'CREATE_POST':
       return {
-        workouts: [action.payload, ...state.workouts],
+        posts: [action.payload, ...state.posts],
       };
     case 'DELETE_POST':
       return {
-        workouts: state.workouts.filter((w) => w._id !== action.payload._id),
+        posts: state.posts.filter((w) => w._id !== action.payload._id),
       };
     default:
       return state;
