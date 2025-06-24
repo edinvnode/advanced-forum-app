@@ -30,7 +30,7 @@ const Create = () => {
 
     const username = { email, password };
 
-    const response = await fetch('/api/user', {
+    const response = await fetch('/api/user/login', {
       method: 'POST',
       body: JSON.stringify(username),
       headers: {
@@ -70,6 +70,9 @@ const Create = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+        </div>
+        <div>
+          <p style={{ color: 'red' }}>{error}</p>
         </div>
         <div>
           <button onClick={handleSubmit}>Create Account</button>
