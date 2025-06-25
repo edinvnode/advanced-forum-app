@@ -7,18 +7,10 @@ const Create = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
 
   const { dispatch } = usePostContext();
   const { user } = useAuthContext();
-
-  /*
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(email);
-    console.log(password);
-  };
-
-  */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +22,7 @@ const Create = () => {
 
     const username = { email, password };
 
-    const response = await fetch('/api/user/login', {
+    const response = await fetch('/api/user/signup', {
       method: 'POST',
       body: JSON.stringify(username),
       headers: {
@@ -71,11 +63,15 @@ const Create = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div>
-          <p style={{ color: 'red' }}>{error}</p>
-        </div>
+
         <div>
           <button onClick={handleSubmit}>Create Account</button>
+        </div>
+        <div>
+          <p style={{ color: 'red' }}>{error && error}</p>
+        </div>
+        <div>
+          <p style={{ color: 'blue' }}>{message && message}</p>
         </div>
       </form>
     </div>
