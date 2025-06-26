@@ -40,6 +40,8 @@ const Create = () => {
       setEmail('');
       setPassword('');
       dispatch({ type: 'CREATE_WORKOUT', payload: json });
+      setMessage('Email and password accepted.');
+      setError('');
     }
   };
 
