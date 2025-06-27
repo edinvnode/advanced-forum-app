@@ -1,10 +1,13 @@
 import React, { useState, useContext } from 'react';
-import { UserContext } from '../../App';
+//import { UserContext } from '../../App';
+
+import { usePostContext } from '../hooks/usePostContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { state, dispatch } = useContext(UserContext);
+  const { state, dispatch } = useContext(useAuthContext);
 
   const handleSubmit = () => {
     /*
