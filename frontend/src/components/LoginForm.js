@@ -7,14 +7,14 @@ import { useAuthContext } from '../hooks/useAuthContext';
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { state, dispatch } = useContext(useAuthContext);
+  const { state, dispatch } = useAuthContext();
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
   const handleSubmit = async () => {
-    // setIsLoading(true)
-    //setError(null)
+    setIsLoading(true);
+    setError(null);
 
     const response = await fetch('/api/user/login', {
       method: 'POST',
