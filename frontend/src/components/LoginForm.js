@@ -9,42 +9,34 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const { state, dispatch } = useContext(useAuthContext);
 
-  const handleSubmit = () => {
-    /*
-    if (
-      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-        email
-      )
-    ) {
-      M.toast({ html: 'invalid Email ID', classes: 'red darken-3' });
-      return;
-    } */
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-    fetch('/signin', {
+  const handleSubmit = async () => {
+    // setIsLoading(true)
+    //setError(null)
+
+    const response = await fetch('/api/user/login', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) {
-          //M.toast({ html: data.error, classes: 'red darken-3' });
-        } else {
-          localStorage.setItem('jwt', data.token);
-          localStorage.setItem('user', JSON.stringify(data.user));
-          dispatch({ type: 'USER', payload: data.user });
-          //M.toast({ html: data.message, classes: 'deep-purple lighten-3' });
-          // history.push('/');
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
+    const json = await response.json();
+
+    if (!response.ok) {
+      setIsLoading(false);
+      setError(json.error);
+    }
+    if (response.ok) {
+      // save the user to local storage
+      localStorage.setItem('user', JSON.stringify(json));
+
+      // update the auth context
+      dispatch({ type: 'LOGIN', payload: json });
+
+      // update loading state
+      setIsLoading(false);
+    }
   };
 
   return (
