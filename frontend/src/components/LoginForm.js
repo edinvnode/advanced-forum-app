@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-//import { UserContext } from '../../App';
+import { useNavigate } from 'react-router-dom';
 
 import { usePostContext } from '../hooks/usePostContext';
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -10,7 +10,9 @@ const LoginForm = () => {
   const { state, dispatch } = useAuthContext();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     setIsLoading(true);
@@ -36,34 +38,40 @@ const LoginForm = () => {
 
       // update loading state
       setIsLoading(false);
+
+      navigate('/');
     }
   };
 
   return (
-    <div className="form">
-      <form>
-        <p>Enter your email and password</p>
-        <div>
-          <label className="lbl-email">Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+    <>
+      {!isLoading && (
+        <div className="form">
+          <form>
+            <p>Enter your email and password</p>
+            <div>
+              <label className="lbl-email">Email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="lbl-password">Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div>
+              <button onClick={handleSubmit}>Submit</button>
+            </div>
+          </form>
         </div>
-        <div>
-          <label className="lbl-password">Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div>
-          <button onClick={handleSubmit}>Submit</button>
-        </div>
-      </form>
-    </div>
+      )}
+    </>
   );
 };
 
