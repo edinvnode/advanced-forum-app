@@ -68,6 +68,7 @@ const LoginForm = () => {
             <div>
               <button onClick={handleSubmit}>Submit</button>
             </div>
+            <div className="error-message">{error}</div>
           </form>
         </div>
       )}
