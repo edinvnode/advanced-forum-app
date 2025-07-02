@@ -39,7 +39,7 @@ const Create = () => {
     if (response.ok) {
       setEmail('');
       setPassword('');
-      dispatch({ type: 'CREATE_WORKOUT', payload: json });
+      dispatch({ type: 'CREATE_POST', payload: json });
       setMessage('Email and password accepted.');
       setError('');
     }
