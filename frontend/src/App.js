@@ -41,9 +41,18 @@ function App() {
             element={user ? <Home /> : <Navigate to="/login" />}
           />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/topic" element={<Topic />} />
+          <Route
+            path="/create"
+            element={user ? <Create /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/profile"
+            element={user ? <Profile /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/topic"
+            element={user ? <Topic /> : <Navigate to="/login" />}
+          />
         </Routes>
       </Router>
     </div>
