@@ -38,7 +38,9 @@ function App() {
           <Route
             path="/"
             exact
-            element={user ? <Home /> : <Navigate to="/login" />}
+            element={
+              user ? <MainPage titles={titles} /> : <Navigate to="/login" />
+            }
           />
           <Route path="/login" element={<LoginForm />} />
           <Route
