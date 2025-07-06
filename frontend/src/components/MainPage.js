@@ -6,12 +6,23 @@ const MainPage = (props) => {
   return (
     <>
       {titles.map((title) => (
-        <div className="title">
-          <a href="#" className="title">
-            {title.title}
-          </a>
-        </div>
+        <>
+          <div className="title">
+            <a href="#" className="title">
+              {title.title}
+            </a>
+          </div>
+        </>
       ))}
+      <div class="title-form">
+        <form>
+          <label>Topic title</label>
+          <input type="text" />
+          <label>Post message</label>
+          <textarea cols={50}></textarea>
+          <button>Submit post</button>
+        </form>
+      </div>
     </>
   );
 };
