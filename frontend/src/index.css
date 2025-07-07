@@ -67,3 +67,15 @@ button {
 .error-message {
   color: red;
 }
+
+.title-form {
+  border-radius: 10px;
+  border: 2px solid green;
+  width: 50vw;
+  margin: 0 auto;
+}
+
+.topic-name {
+  width: 20vw;
+  border-radius: 10px;
+}

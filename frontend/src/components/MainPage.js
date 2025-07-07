@@ -17,7 +17,7 @@ const MainPage = (props) => {
       <div class="title-form">
         <form>
           <label>Topic title</label>
-          <input type="text" />
+          <input type="text" className="topic-name" />
           <label>Post message</label>
           <textarea cols={50}></textarea>
           <button>Submit post</button>
