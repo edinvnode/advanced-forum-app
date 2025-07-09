@@ -43,10 +43,7 @@ function App() {
             }
           />
           <Route path="/login" element={<LoginForm />} />
-          <Route
-            path="/create"
-            element={user ? <Create /> : <Navigate to="/login" />}
-          />
+          <Route path="/create" element={<Create />} />
           <Route
             path="/profile"
             element={user ? <Profile /> : <Navigate to="/login" />}
