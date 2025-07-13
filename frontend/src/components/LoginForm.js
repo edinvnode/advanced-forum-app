@@ -48,6 +48,7 @@ const LoginForm = () => {
       {!isLoading && (
         <div className="form">
           <form>
+            <p>Login to your account</p>
             <p>Enter your email and password</p>
             <div>
               <label className="lbl-email">Email</label>
