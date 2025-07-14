@@ -43,13 +43,8 @@ form {
   gap: 20px;
   border-radius: 10px;
   border: 5px solid green;
-  padding: 20px;
+  padding: 40px;
 }
-
-/*
-form div label {
-  margin: 5px;
-} */
 
 .lbl-email {
   margin-right: 40px;
