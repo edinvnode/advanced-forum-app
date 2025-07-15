@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const MainPage = (props) => {
   const { titles } = props;
+
+  const [title, setTitle] = useState('');
+  const [topic, setTopic] = useState('');
 
   return (
     <>
@@ -17,9 +20,18 @@ const MainPage = (props) => {
       <div class="title-form">
         <form>
           <label>Topic title</label>
-          <input type="text" className="topic-name" />
+          <input
+            type="text"
+            className="topic-name"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+          />
           <label>Post message</label>
-          <textarea cols={50}></textarea>
+          <textarea
+            cols={50}
+            value={topic}
+            onChange={(event) => setTopic(event.target.value)}
+          ></textarea>
           <button>Submit post</button>
         </form>
       </div>
