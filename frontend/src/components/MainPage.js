@@ -6,6 +6,12 @@ const MainPage = (props) => {
   const [title, setTitle] = useState('');
   const [topic, setTopic] = useState('');
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(title);
+    alert(topic);
+  };
+
   return (
     <>
       {titles.map((title) => (
@@ -32,7 +38,7 @@ const MainPage = (props) => {
             value={topic}
             onChange={(event) => setTopic(event.target.value)}
           ></textarea>
-          <button>Submit post</button>
+          <button onClick={handleSubmit}>Submit post</button>
         </form>
       </div>
     </>
