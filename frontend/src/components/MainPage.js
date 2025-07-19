@@ -8,8 +8,8 @@ const MainPage = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(title);
-    alert(topic);
+    console.log(title);
+    console.log(topic);
   };
 
   return (
