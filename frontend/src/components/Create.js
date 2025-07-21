@@ -34,7 +34,7 @@ const Create = () => {
 
     if (!response.ok) {
       setError(json.error);
-      //setEmptyFields(json.emptyFields);
+     
     }
     if (response.ok) {
       setEmail('');
