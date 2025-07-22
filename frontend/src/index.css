@@ -45,6 +45,7 @@ form {
   border: 10px solid green;
   padding: 30px;
   background-color: rgb(76, 230, 76);
+  color: black;
 }
 
 .lbl-email {
