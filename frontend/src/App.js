@@ -33,6 +33,9 @@ function App() {
           <Link to="/" className="login-link">
             Main Page
           </Link>
+          <Link to="/create" className="login-link">
+            Crate Account
+          </Link>
         </nav>
         <Routes>
           <Route

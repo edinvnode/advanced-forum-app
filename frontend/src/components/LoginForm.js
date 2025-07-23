@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { usePostContext } from '../hooks/usePostContext';
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -68,6 +68,9 @@ const LoginForm = () => {
             </div>
             <div>
               <button onClick={handleSubmit}>Submit</button>
+            </div>
+            <div className="create-account">
+              Dont have account? <Link to="/create">Create one here.</Link>
             </div>
             <div className="error-message">{error}</div>
           </form>
