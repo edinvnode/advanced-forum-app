@@ -8,6 +8,7 @@ import Profile from './components/Profile';
 import Topic from './components/Topic';
 import Create from './components/Create';
 import Home from './components/Home';
+import Logout from './components/Logout';
 
 import { useAuthContext } from './hooks/useAuthContext';
 
@@ -27,6 +28,9 @@ function App() {
     <div className="App">
       <Router>
         <nav>
+          <Link to="/logout" className="login-link">
+            Logout
+          </Link>
           <Link to="/login" className="login-link">
             Login
           </Link>
@@ -55,6 +59,7 @@ function App() {
             path="/topic"
             element={user ? <Topic /> : <Navigate to="/login" />}
           />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
       </Router>
     </div>
