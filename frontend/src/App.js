@@ -28,12 +28,16 @@ function App() {
     <div className="App">
       <Router>
         <nav>
-          <Link to="/logout" className="login-link">
-            Logout
-          </Link>
-          <Link to="/login" className="login-link">
-            Login
-          </Link>
+          {user ? (
+            <Link to="/logout" className="login-link">
+              Logout
+            </Link>
+          ) : (
+            <Link to="/login" className="login-link">
+              Login
+            </Link>
+          )}
+
           <Link to="/" className="login-link">
             Main Page
           </Link>
