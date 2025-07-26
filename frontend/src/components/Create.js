@@ -15,10 +15,11 @@ const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    /*
     if (!user) {
       setError('You must be logged in');
       return;
-    }
+    } */
 
     const username = { email, password };
 
@@ -27,14 +28,13 @@ const Create = () => {
       body: JSON.stringify(username),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${user.token}`,
+        // Authorization: `Bearer ${user.token}`,
       },
     });
     const json = await response.json();
 
     if (!response.ok) {
       setError(json.error);
-     
     }
     if (response.ok) {
       setEmail('');
