@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const MainPage = (props) => {
   const { titles } = props;
@@ -17,9 +18,9 @@ const MainPage = (props) => {
       {titles.map((title) => (
         <>
           <div className="title">
-            <a href="#" className="title">
+            <Link href="#" className="title">
               {title.title}
-            </a>
+            </Link>
           </div>
         </>
       ))}
