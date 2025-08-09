@@ -36,7 +36,7 @@ const MainPage = (props) => {
           <label>Post message</label>
           <textarea
             cols={50}
-            rows={120}
+            rows={130}
             value={topic}
             onChange={(event) => setTopic(event.target.value)}
           ></textarea>
