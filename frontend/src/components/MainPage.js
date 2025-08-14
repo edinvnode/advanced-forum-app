@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const MainPage = (props) => {
@@ -6,19 +6,38 @@ const MainPage = (props) => {
 
   const [title, setTitle] = useState('');
   const [topic, setTopic] = useState('');
+  const [topics, setTopics] = useState([]);
 
+  // Fetch topics from backend
+  useEffect(() => {
+    fetch('/api/topics')
+      .then((res) => res.json())
+      .then((data) => setTopics(data))
+      .catch((err) => console.error(err));
+  }, []);
+  // Submit a new topic
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(title);
-    console.log(topic);
+    fetch('/api/topics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, message: topic }),
+    })
+      .then((res) => res.json())
+      .then((newTopic) => {
+        setTopics([...topics, newTopic]); // update UI immediately
+        setTitle('');
+        setTopic('');
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
     <>
-      {titles.map((title) => (
+      {topics.map((title) => (
         <>
           <div className="title">
-            <Link href="#" className="title">
+            <Link to="#" className="title">
               {title.title}
             </Link>
           </div>
