@@ -1,5 +1,7 @@
 const express = require('express');
 
+const Topic = require('../models/TopicModel');
+
 const router = express.Router();
 
 // GET route to fetch topics
@@ -15,3 +17,5 @@ router.post('/api/topics', async (req, res) => {
   await newTopic.save();
   res.json(newTopic);
 });
+
+module.exports = router;

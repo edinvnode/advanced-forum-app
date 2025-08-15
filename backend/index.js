@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 //routes
 const userRoutes = require('./routes/user');
+const topicRoutes = require('./routes/topic');
 
 //mongo URI
 //const MONGO_URI="mongodb+srv://user:user@cluster0.w0exw.mongodb.net/?retryWrites=true&w=majority";
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/user', userRoutes);
+app.use('/api/topics', topicRoutes);
 
 /*
 basic route

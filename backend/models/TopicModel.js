@@ -10,4 +10,4 @@ const TopicSchema = new mongoose.Schema({
   message: String,
 });
 
-const Topic = mongoose.model('Topic', TopicSchema);
+module.export = mongoose.model('Topic', TopicSchema);
