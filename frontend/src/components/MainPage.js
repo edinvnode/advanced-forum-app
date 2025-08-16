@@ -18,26 +18,30 @@ const MainPage = (props) => {
   // Submit a new topic
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('/api/topics', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, message: topic }),
-    })
-      .then((res) => res.json())
-      .then((newTopic) => {
-        setTopics([...topics, newTopic]); // update UI immediately
-        setTitle('');
-        setTopic('');
+    if (title !== '' && topic !== '') {
+      fetch('/api/topics', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, message: topic }),
       })
-      .catch((err) => console.error(err));
+        .then((res) => res.json())
+        .then((newTopic) => {
+          setTopics([...topics, newTopic]); // update UI immediately
+          setTitle('');
+          setTopic('');
+        })
+        .catch((err) => console.error(err));
+    } else {
+      console.log('Please fill title or topic');
+    }
   };
 
   return (
     <>
-      {topics.map((title) => (
+      {topics.map((title, index) => (
         <>
           <div className="title">
-            <Link to="#" className="title">
+            <Link to={`/thread/${title._id}`} key={index} className="title">
               {title.title}
             </Link>
           </div>
