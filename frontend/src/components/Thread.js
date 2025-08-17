@@ -22,14 +22,15 @@ const Thread = () => {
         return res.json();
       })
       .then((data) => {
-        setTopic(data);
-        setPosts(data);
+        setTopic(data.title);
+        setPosts(data.posts);
+        console.log(data.posts);
         setError(null);
       })
       .catch((err) => {
         setError(err.message);
         setTopic(null);
-        setPosts(null);
+        setPosts([]);
       });
   }, [id]);
 
@@ -61,13 +62,21 @@ const Thread = () => {
   return (
     <div>
       <h2>{topic.title}</h2>
-      <p>{topic.message}</p>
-
-      <div className="posts-wrapper">
-        {posts.map((p, i) => (
-          <p>{p}</p>
-        ))}
-      </div>
+      {error ? (
+        <div>Error</div>
+      ) : (
+        <div className="posts-wrapper">
+          {posts.map((p) => (
+            <div key={p._id} className="post">
+              <p>
+                <strong>{p.author}</strong> wrote:
+              </p>
+              <p>{p.message}</p>
+              <small>{new Date(p.createdAt).toLocaleString()}</small>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Later add replies here */}
       <div className="thread-wrapper">
