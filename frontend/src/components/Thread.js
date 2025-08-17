@@ -8,6 +8,7 @@ const Thread = () => {
   const [topic, setTopic] = useState(null);
   const [error, setError] = useState(null);
   const [post, setPost] = useState('');
+  const [posts, setPosts] = useState([]);
 
   //user
   const { user } = useAuthContext();
@@ -22,18 +23,20 @@ const Thread = () => {
       })
       .then((data) => {
         setTopic(data);
+        setPosts(data);
         setError(null);
       })
       .catch((err) => {
         setError(err.message);
         setTopic(null);
+        setPosts(null);
       });
   }, [id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(post);
-    console.log(user.email);
+    //console.log(post);
+    //console.log(user.email);
     if (post !== '') {
       fetch(`/api/topics/${id}/posts`, {
         //fetch(`/${id}/posts`, {
@@ -43,7 +46,7 @@ const Thread = () => {
       })
         .then((res) => res.json())
         .then((newTopic) => {
-          setTopic([...topic, post]); // update UI immediately
+          setPosts([...posts, post]); // update UI immediately
           //setTopic('');
         })
         .catch((err) => console.error(err));
@@ -59,6 +62,13 @@ const Thread = () => {
     <div>
       <h2>{topic.title}</h2>
       <p>{topic.message}</p>
+
+      <div className="posts-wrapper">
+        {posts.map((p, i) => (
+          <p>{p}</p>
+        ))}
+      </div>
+
       {/* Later add replies here */}
       <div className="thread-wrapper">
         <form className="thread-form">
