@@ -66,8 +66,8 @@ const Thread = () => {
         <div>Error</div>
       ) : (
         <div className="posts-wrapper">
-          {posts.map((p) => (
-            <div key={p._id} className="post">
+          {posts.map((p, idx) => (
+            <div key={idx} className="post">
               <p>
                 <strong>{p.author}</strong> wrote:
               </p>
