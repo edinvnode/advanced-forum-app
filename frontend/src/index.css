@@ -128,12 +128,14 @@ button {
 }
 
 .post p {
-  margin: 10 10 10 10;
+  margin: 10px auto;
   color: white;
   border: 1px solid black;
+  width: 400px;
 }
 
 .post small {
   padding: 10px;
   margin-top: 10px;
+  color: yellowgreen;
 }
