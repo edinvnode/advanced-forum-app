@@ -34,6 +34,22 @@ const Thread = () => {
       });
   }, [id]);
 
+  const fetchTopic = async () => {
+    try {
+      const res = await fetch(`/api/topics/${id}`);
+      const data = await res.json();
+      setTopic(data);
+      //console.log(data);
+      setPosts(data.posts);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchTopic();
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     //console.log(post);
@@ -48,8 +64,9 @@ const Thread = () => {
       })
         .then((res) => res.json())
         .then((newTopic) => {
-          setPosts([...posts, post]); // update UI immediately
-          //setTopic('');
+          //setPosts([...posts, newTopic]); // update UI immediately
+          fetchTopic();
+          setPost('');
         })
         .catch((err) => console.error(err));
     } else {
