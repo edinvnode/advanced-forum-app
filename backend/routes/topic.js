@@ -48,8 +48,10 @@ router.post('/:id/posts', async (req, res) => {
   const topic = await Topic.findById(req.params.id);
   if (!topic) return res.status(404).json({ error: 'Topic not found' });
 
-  console.log('message', message);
-  console.log('author', author);
+  console.log('POST body:', req.body);
+
+  //console.log('message', message);
+  //console.log('author', author);
 
   topic.posts.push({ message, author });
   await topic.save();

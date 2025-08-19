@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useAuthContext } from '../hooks/useAuthContext';
+
 const MainPage = (props) => {
   const { titles } = props;
 
   const [title, setTitle] = useState('');
   const [topic, setTopic] = useState('');
   const [topics, setTopics] = useState([]);
+
+  const { user } = useAuthContext();
 
   // Fetch topics from backend
   useEffect(() => {
@@ -22,7 +26,7 @@ const MainPage = (props) => {
       fetch('/api/topics', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, message: topic }),
+        body: JSON.stringify({ title, message: topic, author: user.email }),
       })
         .then((res) => res.json())
         .then((newTopic) => {

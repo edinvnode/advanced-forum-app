@@ -1,18 +1,17 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
-// Define a Post schema (embedded in Topic)
+// Define Post schema
 const PostSchema = new Schema({
   message: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
-  author: { type: String }, // later you can link this to a User model
+  author: { type: String, required: true },
 });
 
-// Define a Topic schema with multiple posts
+// Define Topic schema with posts array
 const TopicSchema = new Schema({
   title: { type: String, required: true },
-  posts: [PostSchema], // array of posts
+  posts: [PostSchema],
 });
 
 module.exports = mongoose.model('Topic', TopicSchema);

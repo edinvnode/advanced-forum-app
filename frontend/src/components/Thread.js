@@ -38,6 +38,7 @@ const Thread = () => {
     e.preventDefault();
     //console.log(post);
     //console.log(user.email);
+    console.log({ message: post, author: user?.email });
     if (post !== '') {
       fetch(`/api/topics/${id}/posts`, {
         //fetch(`/${id}/posts`, {
@@ -67,12 +68,16 @@ const Thread = () => {
       ) : (
         <div className="posts-wrapper">
           {posts.map((p, idx) => (
-            <div key={idx} className="post">
+            <div key={p._id} className="post">
               <p>
-                <strong>{p.author}</strong> wrote:
+                <strong>{p.author || 'Anonymous'}</strong> wrote:
               </p>
               <p>{p.message}</p>
-              <small>{new Date(p.createdAt).toLocaleString()}</small>
+              <small>
+                {p.createdAt
+                  ? new Date(p.createdAt).toLocaleString()
+                  : 'Unknown date'}
+              </small>
             </div>
           ))}
         </div>
