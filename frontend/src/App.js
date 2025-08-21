@@ -30,9 +30,14 @@ function App() {
       <Router>
         <nav>
           {user ? (
-            <Link to="/logout" className="login-link">
-              Logout
-            </Link>
+            <>
+              <Link to="/logout" className="login-link">
+                Logout
+              </Link>
+              <Link to="/profile" className="login-link">
+                Profile
+              </Link>
+            </>
           ) : (
             <Link to="/login" className="login-link">
               Login
