@@ -6,7 +6,7 @@ const Profile = () => {
   const { user } = useAuthContext();
 
   return (
-    <div>
+    <div className="profile-card">
       <h3>Profile</h3>
       <span>Login email: {user.email}</span>
     </div>
