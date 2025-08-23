@@ -9,6 +9,7 @@ const MainPage = (props) => {
   const [title, setTitle] = useState('');
   const [topic, setTopic] = useState('');
   const [topics, setTopics] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { user } = useAuthContext();
 
@@ -33,6 +34,7 @@ const MainPage = (props) => {
           setTopics([...topics, newTopic]); // update UI immediately
           setTitle('');
           setTopic('');
+          setIsLoading(false);
         })
         .catch((err) => console.error(err));
     } else {
@@ -42,16 +44,23 @@ const MainPage = (props) => {
 
   return (
     <>
-      {topics.map((title, index) => (
-        <>
+      {isLoading ? (
+        topics.map((title, index) => (
           <div className="title">
-            <Link to={`/thread/${title._id}`} key={index} className="title">
+            <Link
+              to={`/thread/${title._id}`}
+              key={index}
+              className="title-link"
+            >
               {title.title}
             </Link>
           </div>
-        </>
-      ))}
-      <div class="title-form">
+        ))
+      ) : (
+        <div>Loading</div>
+      )}
+
+      <div className="title-form">
         <form>
           <label>Topic title</label>
           <input
