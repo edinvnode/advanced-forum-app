@@ -66,15 +66,19 @@ router.get('/:id', async (req, res) => {
   res.json(topic);
 });
 
-// GET /posts/:email → fetch all posts by email across topics
-router.get('/:email', async (req, res) => {
+/*
+router.get('/test', (req, res) => {
+  res.send('Topics route is alive');
+}); */
+
+router.get('/by-email/:email', async (req, res) => {
   try {
     const { email } = req.params;
+    console.log('EMAIL PARAM:', email);
 
-    // Find all topics that contain posts by this email
-    const topics = await Topic.find({ 'posts.author': author });
+    const topics = await Topic.find({ 'posts.author': email });
+    console.log('TOPICS FOUND:', topics.length);
 
-    // Extract all posts with matching email
     let userPosts = [];
     topics.forEach((topic) => {
       const filteredPosts = topic.posts.filter((post) => post.author === email);
@@ -87,10 +91,11 @@ router.get('/:email', async (req, res) => {
       );
     });
 
+    console.log('USER POSTS:', userPosts.length);
     res.json(userPosts);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Something went wrong' });
+    console.error('Error in /:email route:', err);
+    res.status(500).json({ error: 'Server error' });
   }
 });
 
