@@ -66,4 +66,32 @@ router.get('/:id', async (req, res) => {
   res.json(topic);
 });
 
+// GET /posts/:email → fetch all posts by email across topics
+router.get('/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    // Find all topics that contain posts by this email
+    const topics = await Topic.find({ 'posts.author': author });
+
+    // Extract all posts with matching email
+    let userPosts = [];
+    topics.forEach((topic) => {
+      const filteredPosts = topic.posts.filter((post) => post.author === email);
+      userPosts = userPosts.concat(
+        filteredPosts.map((p) => ({
+          topicId: topic._id,
+          topicTitle: topic.title,
+          ...p.toObject(),
+        }))
+      );
+    });
+
+    res.json(userPosts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Something went wrong' });
+  }
+});
+
 module.exports = router;
