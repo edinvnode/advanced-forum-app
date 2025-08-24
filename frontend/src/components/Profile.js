@@ -26,9 +26,9 @@ const Profile = () => {
       <h4>My Posts</h4>
       {posts.length > 0 ? (
         posts.map((post, index) => (
-          <div key={index} className="post">
+          <div key={index} className="profile-post">
             <h5>{post.topicTitle}</h5>
-            <p>{post.content}</p>
+            <p>{post.message}</p>
             <small>by {post.author}</small>
           </div>
         ))
