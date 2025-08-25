@@ -44,6 +44,9 @@ const Thread = () => {
       return;
     }
 
+    //console.log(id);
+    //console.log('Submitting post:', { message: post, author: user?.email });
+
     try {
       const res = await fetch(`/api/topics/${id}/posts`, {
         method: 'POST',

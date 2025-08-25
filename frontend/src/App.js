@@ -37,6 +37,9 @@ function App() {
               <Link to="/profile" className="login-link">
                 Profile
               </Link>
+              <Link to="/" className="login-link">
+                Main Page
+              </Link>
             </>
           ) : (
             <Link to="/login" className="login-link">
@@ -44,9 +47,6 @@ function App() {
             </Link>
           )}
 
-          <Link to="/" className="login-link">
-            Main Page
-          </Link>
           <Link to="/create" className="login-link">
             Crate Account
           </Link>

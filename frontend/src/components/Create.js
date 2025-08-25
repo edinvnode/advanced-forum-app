@@ -21,7 +21,9 @@ const Create = () => {
       return;
     } */
 
-    const username = { email, password };
+    const email = user.email;
+
+    const username = { email, password, email };
 
     const response = await fetch('/api/user/signup', {
       method: 'POST',
