@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
   const { user } = useAuthContext();
@@ -27,7 +28,7 @@ const Profile = () => {
       {posts.length > 0 ? (
         posts.map((post, index) => (
           <div key={index} className="profile-post">
-            <h5>{post.topicTitle}</h5>
+            <Link to={'/thread/' + post.topicId}>{post.topicTitle}</Link>
             <p>{post.message}</p>
             <small>by {post.author}</small>
           </div>
